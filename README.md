@@ -128,6 +128,10 @@ Category(
 ),
 ```
 
+## Demo
+
+<a href='https://vercel.com/josiassejod1/flutterbook/4PmLNi7ZrDrP8g5scjtCkoteE1gq' target='_blank'>Open the demo</a>
+
 #### That's it!
 
 ## Roadmap 🚧
