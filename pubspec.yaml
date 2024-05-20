@@ -4,11 +4,10 @@ version: 0.1.9
 homepage: https://github.com/GhostWalker562/flutterbook
 
 environment:
-  sdk: ">=3.0.5 <4.0.0"
+  sdk: '>=3.4.0 <4.0.0'
 
 dependencies:
   cupertino_icons: ^1.0.3
-  device_preview: ^1.1.0
   flutter_markdown: ^0.6.17+1
   dart_code_viewer2: ^1.0.2
   flutter:
