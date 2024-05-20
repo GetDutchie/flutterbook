@@ -140,10 +140,6 @@ Button.primary(
 ),
 ```
 
-## Demo
-
-<a href='https://flutterbook.vercel.app/' target='_blank'>Open the demo</a>
-
 #### That's it!
 
 ## Roadmap 🚧
