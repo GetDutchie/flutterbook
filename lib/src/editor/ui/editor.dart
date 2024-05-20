@@ -1,6 +1,4 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterbook/src/editor/providers/device_preview_provider.dart';
 import 'package:flutterbook/src/editor/providers/pan_provider.dart';
 import 'package:flutterbook/src/editor/providers/tab_provider.dart';
 import 'package:flutterbook/src/editor/ui/doc_component/doc_component.dart';
@@ -70,13 +68,12 @@ class Editor extends StatelessWidget {
                     ),
                     Consumer<TabProvider>(
                       builder: (context, model, child) {
-                        List<ComponentState> state = recursiveRetrievalOfStates(
-                            context.read<List<Category>>());
+                        List<ComponentState> state =
+                            recursiveRetrievalOfStates(context.read<List<Category>>());
 
-                        Widget element =
-                            model.tab == editor.FlutterBookTab.canvas
-                                ? _Canvas(component)
-                                : _Doc(state, currentStory);
+                        Widget element = model.tab == editor.FlutterBookTab.canvas
+                            ? _Canvas(component)
+                            : _Doc(state, currentStory);
                         return element;
                       },
                     )
@@ -106,24 +103,7 @@ class _Canvas extends StatelessWidget {
       builder: (context, model, child) {
         TransformationController _transformation = TransformationController();
         _transformation.value = Matrix4.identity()..scale(model.zoom);
-        return context.watch<DevicePreviewProvider>().show
-            ? _DevicePreviewCanvas(component)
-            : _InteractiveViewerCanvas(component, _transformation);
-      },
-    );
-  }
-}
-
-class _DevicePreviewCanvas extends StatelessWidget {
-  final Widget? component;
-  _DevicePreviewCanvas(
-    this.component,
-  );
-  @override
-  Widget build(BuildContext context) {
-    return DevicePreview(
-      builder: (context) {
-        return component ?? Container();
+        return _InteractiveViewerCanvas(component, _transformation);
       },
     );
   }
@@ -137,12 +117,11 @@ class _Doc extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle titleStyle =
-        Theme.of(context).textTheme.titleMedium!.copyWith(
-              color: Theme.of(context).hintColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 32,
-            );
+    final TextStyle titleStyle = Theme.of(context).textTheme.titleMedium!.copyWith(
+          color: Theme.of(context).hintColor,
+          fontWeight: FontWeight.bold,
+          fontSize: 32,
+        );
 
     return SingleChildScrollView(
       child: Align(
@@ -190,8 +169,7 @@ class _InteractiveViewerCanvas extends StatefulWidget {
   _InteractiveViewerCanvas(this.component, this.controller);
 
   @override
-  State<_InteractiveViewerCanvas> createState() =>
-      _InteractiveViewerCanvasState();
+  State<_InteractiveViewerCanvas> createState() => _InteractiveViewerCanvasState();
 }
 
 class _InteractiveViewerCanvasState extends State<_InteractiveViewerCanvas>
@@ -272,8 +250,7 @@ class Story extends StatelessWidget {
   Widget build(BuildContext context) {
     final story = context.watch<StoryProvider>().currentStory;
 
-    return story?.builder(
-            context, context.watch<CanvasDelegateProvider>().storyProvider!) ??
+    return story?.builder(context, context.watch<CanvasDelegateProvider>().storyProvider!) ??
         Container(
           color: context.colorScheme.onSecondary,
           child: Center(
